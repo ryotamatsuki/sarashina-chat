@@ -17,7 +17,7 @@ model_volume = modal.Volume.from_name(
 
 download_image = (
     modal.Image.debian_slim(python_version="3.11")
-    .pip_install("huggingface_hub")
+    .pip_install("huggingface_hub", "fastapi")
 )
 
 inference_image = (
