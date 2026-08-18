@@ -47,6 +47,7 @@ if prompt:
                     headers={
                         "Modal-Key": MODAL_KEY,
                         "Modal-Secret": MODAL_SECRET,
+                        "Authorization": f"Bearer {MODAL_KEY}.{MODAL_SECRET}",
                         "Content-Type": "application/json",
                     },
                     json={"messages": st.session_state.messages},
@@ -62,10 +63,7 @@ if prompt:
                     answer = result["answer"]
 
             except Exception as exc:
-                answer = (
-                    "バックエンドとの通信に失敗しました。\n\n"
-                    f"`{exc}`"
-                )
+                answer = f"バックエンドとの通信に失敗しました。 {exc}"
 
             st.markdown(answer)
 
